@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  ubuntu:
+    image: dorowu/ubuntu-desktop-lxde-vnc
+    container_name: ubuntu
+    ports:
+      - "6080:80"      # Browser access (noVNC)
+      - "5600:5600"    # VNC access
+    environment:
+      RESOLUTION: "1280x800"
+      VNC_PASSWORD: "ajith"
+    volumes:
+      - ubuntu_data:/home/ubuntu/
+    restart: unless-stopped
+
+volumes:
+  ubuntu_data:
